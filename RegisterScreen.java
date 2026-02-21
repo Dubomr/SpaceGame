@@ -1,12 +1,9 @@
-import java.util.ArrayList;
+public class RegisterScreen extends javax.swing.JFrame {
 
-public class RegisterEkrani extends javax.swing.JFrame {
-
-  public RegisterEkrani() {
+  public RegisterScreen() {
     initComponents();
   }
 
-  @SuppressWarnings("unchecked")
   private void initComponents() {
 
     jPanel1 = new javax.swing.JPanel();
@@ -22,11 +19,11 @@ public class RegisterEkrani extends javax.swing.JFrame {
 
     jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18));
     jLabel1.setForeground(new java.awt.Color(51, 0, 51));
-    jLabel1.setText("Kullanıcı Adı : ");
+    jLabel1.setText("User Name : ");
 
     jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18));
     jLabel2.setForeground(new java.awt.Color(51, 51, 0));
-    jLabel2.setText("Parola : ");
+    jLabel2.setText("Password : ");
 
     p_a.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,10 +103,8 @@ public class RegisterEkrani extends javax.swing.JFrame {
     String k_a = k_a_a.getText();
     String p = new String(p_a.getPassword());
 
-    GirisEkrani a1 = new GirisEkrani();
-    ArrayList<User> user_list = a1.getUser_list();
+    LoginScreen.getUser_list().add(new User(k_a, p));
 
-    user_list.add(new User(k_a, p));
     setVisible(false);
   }
 
@@ -126,18 +121,18 @@ public class RegisterEkrani extends javax.swing.JFrame {
         }
       }
     } catch (ClassNotFoundException ex) {
-      java.util.logging.Logger.getLogger(RegisterEkrani.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+      java.util.logging.Logger.getLogger(RegisterScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     } catch (InstantiationException ex) {
-      java.util.logging.Logger.getLogger(RegisterEkrani.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+      java.util.logging.Logger.getLogger(RegisterScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     } catch (IllegalAccessException ex) {
-      java.util.logging.Logger.getLogger(RegisterEkrani.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+      java.util.logging.Logger.getLogger(RegisterScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-      java.util.logging.Logger.getLogger(RegisterEkrani.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+      java.util.logging.Logger.getLogger(RegisterScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     }
 
     java.awt.EventQueue.invokeLater(new Runnable() {
       public void run() {
-        new RegisterEkrani().setVisible(true);
+        new RegisterScreen().setVisible(true);
       }
     });
   }

@@ -1,33 +1,33 @@
 import java.util.ArrayList;
 
 class User {
-  private String kullanici_adi;
-  private String parola;
+  private String user_name;
+  private String password;
 
-  public User(String kullanici_adi, String parola) {
-    this.kullanici_adi = kullanici_adi;
-    this.parola = parola;
+  public User(String user_name, String password) {
+    this.user_name = user_name;
+    this.password = password;
   }
 
-  public String getKullanici_adi() {
-    return kullanici_adi;
+  public String getUser_name() {
+    return user_name;
   }
 
-  public void setKullanici_adi(String kullanici_adi) {
-    this.kullanici_adi = kullanici_adi;
+  public void setUser_name(String user_name) {
+    this.user_name = user_name;
   }
 
-  public String getParola() {
-    return parola;
+  public String getPassword() {
+    return password;
   }
 
-  public void setParola(String parola) {
-    this.parola = parola;
+  public void setPassword(String password) {
+    this.password = password;
   }
 
 }
 
-public class GirisEkrani extends javax.swing.JFrame {
+public class LoginScreen extends javax.swing.JFrame {
 
   private static ArrayList<User> user_list = new ArrayList<User>();
 
@@ -36,14 +36,13 @@ public class GirisEkrani extends javax.swing.JFrame {
   }
 
   public static void setUser_list(ArrayList<User> user_list) {
-    GirisEkrani.user_list = user_list;
+    LoginScreen.user_list = user_list;
   }
 
-  public GirisEkrani() {
+  public LoginScreen() {
     initComponents();
   }
 
-  @SuppressWarnings("unchecked")
   private void initComponents() {
 
     jPanel1 = new javax.swing.JPanel();
@@ -51,27 +50,27 @@ public class GirisEkrani extends javax.swing.JFrame {
     jLabel2 = new javax.swing.JLabel();
     k_a_a = new javax.swing.JTextField();
     p_a = new javax.swing.JPasswordField();
-    mesaj = new javax.swing.JLabel();
+    message = new javax.swing.JLabel();
     jPanel2 = new javax.swing.JPanel();
     register = new javax.swing.JButton();
     login = new javax.swing.JButton();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-    setTitle("Giris Ekrani");
+    setTitle("Login Screen");
     setBounds(new java.awt.Rectangle(400, 250, 0, 0));
 
     jPanel1.setBackground(new java.awt.Color(0, 0, 204));
 
     jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18));
     jLabel1.setForeground(new java.awt.Color(255, 102, 51));
-    jLabel1.setText("Kullanıcı Adı : ");
+    jLabel1.setText("User Name : ");
 
     jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18));
     jLabel2.setForeground(new java.awt.Color(255, 153, 0));
-    jLabel2.setText("Parola : ");
+    jLabel2.setText("Password : ");
 
-    mesaj.setFont(new java.awt.Font("Segoe UI", 1, 18));
-    mesaj.setForeground(new java.awt.Color(255, 0, 0));
+    message.setFont(new java.awt.Font("Segoe UI", 1, 18));
+    message.setForeground(new java.awt.Color(255, 0, 0));
 
     javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
     jPanel1.setLayout(jPanel1Layout);
@@ -93,7 +92,7 @@ public class GirisEkrani extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED,
                             javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(mesaj, javax.swing.GroupLayout.PREFERRED_SIZE, 135,
+                        .addComponent(message, javax.swing.GroupLayout.PREFERRED_SIZE, 135,
                             javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(53, 53, 53)))));
     jPanel1Layout.setVerticalGroup(
@@ -105,7 +104,8 @@ public class GirisEkrani extends javax.swing.JFrame {
                     .addComponent(k_a_a, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE,
                         javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(mesaj, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(message, javax.swing.GroupLayout.PREFERRED_SIZE, 20,
+                    javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -177,7 +177,7 @@ public class GirisEkrani extends javax.swing.JFrame {
   }
 
   private void registerActionPerformed(java.awt.event.ActionEvent evt) {
-    RegisterEkrani re = new RegisterEkrani();
+    RegisterScreen re = new RegisterScreen();
     re.setVisible(true);
   }
 
@@ -186,14 +186,14 @@ public class GirisEkrani extends javax.swing.JFrame {
     String p = new String(p_a.getPassword());
 
     for (User user : user_list) {
-      if (user.getKullanici_adi().equals(k_a) && user.getParola().equals(p)) {
-        ZorlukEkrani zorlukEkrani = new ZorlukEkrani();
-        zorlukEkrani.setVisible(true);
+      if (user.getUser_name().equals(k_a) && user.getPassword().equals(p)) {
+        DifficultyScreen difficultyScreen = new DifficultyScreen();
+        difficultyScreen.setVisible(true);
         this.dispose();
         return;
       }
     }
-    mesaj.setText("Giriş Başarısız.");
+    message.setText("Login Failed.");
   }
 
   public static void main(String args[]) {
@@ -205,18 +205,18 @@ public class GirisEkrani extends javax.swing.JFrame {
         }
       }
     } catch (ClassNotFoundException ex) {
-      java.util.logging.Logger.getLogger(GirisEkrani.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+      java.util.logging.Logger.getLogger(LoginScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     } catch (InstantiationException ex) {
-      java.util.logging.Logger.getLogger(GirisEkrani.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+      java.util.logging.Logger.getLogger(LoginScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     } catch (IllegalAccessException ex) {
-      java.util.logging.Logger.getLogger(GirisEkrani.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+      java.util.logging.Logger.getLogger(LoginScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-      java.util.logging.Logger.getLogger(GirisEkrani.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+      java.util.logging.Logger.getLogger(LoginScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     }
 
     java.awt.EventQueue.invokeLater(new Runnable() {
       public void run() {
-        new GirisEkrani().setVisible(true);
+        new LoginScreen().setVisible(true);
       }
     });
   }
@@ -227,7 +227,7 @@ public class GirisEkrani extends javax.swing.JFrame {
   private javax.swing.JPanel jPanel2;
   private javax.swing.JTextField k_a_a;
   private javax.swing.JButton login;
-  private javax.swing.JLabel mesaj;
+  private javax.swing.JLabel message;
   private javax.swing.JPasswordField p_a;
   private javax.swing.JButton register;
 }
